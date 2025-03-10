@@ -1,0 +1,16 @@
+<!-- FBCLID Capture: Store in Cart Attributes -->
+<script>
+function storeFbclidInCart() {
+    let urlParams = new URLSearchParams(window.location.search);
+    let fbclid = urlParams.get('fbclid');
+    if (fbclid) {
+        fetch('/cart/update.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ attributes: { fbclid: fbclid } })
+        }).then(response => console.log("FBCLID Stored in Cart:", fbclid));
+    }
+}
+storeFbclidInCart();
+</script>
+<!-- End FBCLID Capture -->
